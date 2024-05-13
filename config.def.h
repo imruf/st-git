@@ -5,12 +5,18 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
-};
+
+
+static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
+static char *font2[] = { "UbuntuMono Nerd Font:pixelsize=10:antialias=true:autohint=true" };
+
+/* 
+static char *font = "Hack:pixelsize=20:antialias=true:autohint=true";
+static char *font = "mononoki Nerd Font:pixelsize=20:antialias=true:autohint=true"; 
+static char *font = "Hack Nerd Font:pixelsize=20:antialias=true:autohint=true"; 
+static char *font2[] = { "Inconsolata for Powerline:pixelsize=16:antialias=true:autohint=true" };
+static char *font2[] = { "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
+*/
 
 static int borderpx = 2;
 
@@ -116,44 +122,66 @@ float alpha = 0.93, alphaUnfocused = 0.6;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+    /* Vim Nightfly */
+"#1d3b53",  /*  0: black    */
+"#fc514e",  /*  1: red      */
+"#a1cd5e",  /*  2: green    */
+"#e3d18a",  /*  3: yellow   */
+"#82aaff",  /*  4: blue     */
+"#c792ea",  /*  5: magenta  */
+"#7fdbca",  /*  6: cyan     */
+"#a1aab8",  /*  7: white    */
+"#7c8f8f",  /*  8: brblack  */
+"#ff5874",  /*  9: brred    */
+"#21c7a8",  /* 10: brgreen  */
+"#ecc48d",  /* 11: bryellow */
+"#82aaff",  /* 12: brblue   */
+"#ae81ff",  /* 13: brmagenta*/
+"#7fdbca",  /* 14: brcyan   */
+"#d6deeb",  /* 15: brwhite  */
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"black",
+[255] = 0,
+"#011627",
+"#acb4c2",
+"#eeeeee",
+"#080808",
+"#9ca1aa",
+"#b2ceee",
+"#080808",
 };
 
+static const char *altcolorname[] = {
+/* Grubbox Dark */
+"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+"#cc241d",
+"#98971a",
+"#d79921",
+"#458588",
+"#b16286",
+"#689d6a",
+"#a89984",
+"#928374",
+"#fb4934",
+"#b8bb26",
+"#fabd2f",
+"#83a598",
+"#d3869b",
+"#8ec07c",
+"#ebdbb2",
+[255] = 0,
+/* more colors can be added after 255 to use with DefaultXX */
+"#282828", /* 256 -> bg */
+"#ebdbb2", /* 257 -> fg */
+"#add8e6", /* 258 -> cursor */
+"#555555", /* 259 -> rev cursor*/
 
-/*
- * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
- */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
-unsigned int bg = 0, bgUnfocused = 16;
+};
+
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultcs = 258;
+unsigned int defaultrcs = 259;
+unsigned int bg = 256, bgUnfocused = 256;
 
 /*
  * https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
@@ -168,7 +196,7 @@ unsigned int bg = 0, bgUnfocused = 16;
  * 7: blinking st cursor
  * 8: steady st cursor
  */
-static unsigned int cursorstyle = 1;
+static unsigned int cursorstyle = 5;
 static Rune stcursor = 0x2603; /* snowman ("☃") */
 
 /*
@@ -239,9 +267,10 @@ ResourcePref resources[] = {
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
+
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+	{ XK_ANY_MOD,           Button2, clippaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
@@ -249,7 +278,7 @@ static MouseShortcut mshortcuts[] = {
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
@@ -263,12 +292,18 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
-	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+	{ TERMMOD,              XK_Y,           clippaste,       {.i =  0} },
+	{ ShiftMask,            XK_Insert,      clippaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ TERMMOD,              XK_P,           swapcolors,     {.i =  0} },
+    { Mod1Mask|ControlMask, XK_k,           kscrollup,      {.i = -1} },
+	{ Mod1Mask|ControlMask, XK_j,           kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ MODKEY,               XK_l,           copyurl,        {.i =  0} },
-	{ MODKEY|ShiftMask,     XK_L,           copyurl,        {.i =  1} },
+	{ MODKEY,               XK_u,           opencopied,     {.v = "xdg-open"} },
 };
+
 
 /*
  * Special keys (change & recompile st.info accordingly)
