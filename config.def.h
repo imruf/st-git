@@ -7,8 +7,8 @@
  */
 
 
-static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
-static char *font2[] = { "UbuntuMono Nerd Font:pixelsize=10:antialias=true:autohint=true" };
+static char *font = "mono:pixelsize=16:antialias=true:autohint=true";
+static char *font2[] = { "UbuntuMono Nerd Font:pixelsize=11:antialias=true:autohint=true" };
 
 /* 
 static char *font = "Hack:pixelsize=20:antialias=true:autohint=true";
@@ -118,7 +118,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.93, alphaUnfocused = 0.6;
+float alpha = 0.95, alphaUnfocused = 0.90;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {

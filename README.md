@@ -1,4 +1,5 @@
-st - simple terminal Version:0.8.5
+st - : git version to maintain upgrade from suckless
+
 ---
  st is a simple terminal emulator for X which sucks less.
  
