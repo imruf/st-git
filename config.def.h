@@ -118,63 +118,68 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.95, alphaUnfocused = 0.90;
+float alpha = 0.9, alphaUnfocused = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-/* Grubbox Dark */
-"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-"#cc241d",
-"#98971a",
-"#d79921",
-"#458588",
-"#b16286",
-"#689d6a",
-"#a89984",
-"#928374",
-"#fb4934",
-"#b8bb26",
-"#fabd2f",
-"#83a598",
-"#d3869b",
-"#8ec07c",
-"#ebdbb2",
-[255] = 0,
-/* more colors can be added after 255 to use with DefaultXX */
-"#282828", /* 256 -> bg */
-"#ebdbb2", /* 257 -> fg */
-"#add8e6", /* 258 -> cursor */
-"#555555", /* 259 -> rev cursor*/
+/* Gruvbox Dark */
+  /* 8 normal colors */
+  [0] = "#1d2021", /* default contrast #282828 hard contrast: #1d2021 / soft contrast: #32302f */
+  [1] = "#ea6962", /* red     */
+  [2] = "#a9b665", /* green   */
+  [3] = "#d8a657", /* yellow  */
+  [4] = "#7daea3", /* blue    */
+  [5] = "#d3869b", /* magenta */
+  [6] = "#89b482", /* cyan    */
+  [7] = "#d4be98", /* white   */
+
+  /* 8 bright colors */
+  [8]  = "#928374", /* black   */
+  [9]  = "#ef938e", /* red     */
+  [10] = "#bbc585", /* green   */
+  [11] = "#e1bb7e", /* yellow  */
+  [12] = "#9dc2ba", /* blue    */
+  [13] = "#e1acbb", /* magenta */
+  [14] = "#a7c7a2", /* cyan    */
+  [15] = "#e2d3ba", /* white   */
+
+  /* extra color */
+ [255] = 0,
+ [256] = "#282828",
+ [257] = "#e2d3ba",
+ [258] = "#e1bb7e",
+ [259] = "#555555",
 
 };
 
 static const char *altcolorname[] = {
-    /* Vim Nightfly */
-"#1d3b53",  /*  0: black    */
-"#fc514e",  /*  1: red      */
-"#a1cd5e",  /*  2: green    */
-"#e3d18a",  /*  3: yellow   */
-"#82aaff",  /*  4: blue     */
-"#c792ea",  /*  5: magenta  */
-"#7fdbca",  /*  6: cyan     */
-"#a1aab8",  /*  7: white    */
-"#7c8f8f",  /*  8: brblack  */
-"#ff5874",  /*  9: brred    */
-"#21c7a8",  /* 10: brgreen  */
-"#ecc48d",  /* 11: bryellow */
-"#82aaff",  /* 12: brblue   */
-"#ae81ff",  /* 13: brmagenta*/
-"#7fdbca",  /* 14: brcyan   */
-"#d6deeb",  /* 15: brwhite  */
+	/* solarized dark */
+  /* 8 normal colors */
+  [0] = "#073642",  /*  0: black    */ 
+  [1] = "#dc322f",  /*  1: red      */ 
+  [2] = "#859900",  /*  2: green    */ 
+  [3] = "#b58900",  /*  3: yellow   */ 
+  [4] = "#268bd2",  /*  4: blue     */ 
+  [5] = "#d33682",  /*  5: magenta  */ 
+  [6] = "#2aa198",  /*  6: cyan     */ 
+  [7] = "#eee8d5",  /*  7: white    */ 
 
-[255] = 0,
-"#011627",
-"#acb4c2",
-"#eeeeee",
-"#080808",
-"#9ca1aa",
-"#b2ceee",
-"#080808",
+  /* 8 bright colors */
+  [8]  = "#002b36",  /*  8: brblack  */
+  [9]  = "#cb4b16",  /*  9: brred    */
+  [10] = "#586e75",  /* 10: brgreen  */
+  [11] = "#657b83",  /* 11: bryellow */
+  [12] = "#839496",  /* 12: brblue   */
+  [13] = "#6c71c4",  /* 13: brmagenta*/
+  [14] = "#93a1a1",  /* 14: brcyan   */
+  [15] = "#fdf6e3",  /* 15: brwhite  */
+
+  /* extra color */
+ [255] = 0,
+ [256] = "#002b36", 
+ [257] = "#839496",
+ [258] = "#93a1a1",
+ [259] = "#fdf6e3",
 };
 
 
