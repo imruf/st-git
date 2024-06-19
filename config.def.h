@@ -118,13 +118,12 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9, alphaUnfocused = 0.8;
+float alpha = 0.9, alphaUnfocused = 0.80;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-/* Gruvbox Dark */
   /* 8 normal colors */
-  [0] = "#1d2021", /* default contrast #282828 hard contrast: #1d2021 / soft contrast: #32302f */
+  [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f medium #282828 */
   [1] = "#ea6962", /* red     */
   [2] = "#a9b665", /* green   */
   [3] = "#d8a657", /* yellow  */
@@ -145,41 +144,41 @@ static const char *colorname[] = {
 
   /* extra color */
  [255] = 0,
- [256] = "#282828",
+ [256] = "#282828", 
  [257] = "#e2d3ba",
- [258] = "#e1bb7e",
- [259] = "#555555",
+ [258] = "#e2d3ba",
+ [259] = "#282828",
 
 };
 
 static const char *altcolorname[] = {
-	/* solarized dark */
+	/* solarized light */
   /* 8 normal colors */
-  [0] = "#073642",  /*  0: black    */ 
-  [1] = "#dc322f",  /*  1: red      */ 
-  [2] = "#859900",  /*  2: green    */ 
-  [3] = "#b58900",  /*  3: yellow   */ 
-  [4] = "#268bd2",  /*  4: blue     */ 
-  [5] = "#d33682",  /*  5: magenta  */ 
-  [6] = "#2aa198",  /*  6: cyan     */ 
-  [7] = "#eee8d5",  /*  7: white    */ 
-
+ [0] = 	"#eee8d5",  /*  0: black    */
+ [1] = 	"#dc322f",  /*  1: red      */
+ [2] = 	"#859900",  /*  2: green    */
+ [3] = 	"#b58900",  /*  3: yellow   */
+ [4] = 	"#268bd2",  /*  4: blue     */
+ [5] = 	"#d33682",  /*  5: magenta  */
+ [6] = 	"#2aa198",  /*  6: cyan     */
+ [7] = 	"#073642",  /*  7: white    */
+ 
   /* 8 bright colors */
-  [8]  = "#002b36",  /*  8: brblack  */
-  [9]  = "#cb4b16",  /*  9: brred    */
-  [10] = "#586e75",  /* 10: brgreen  */
-  [11] = "#657b83",  /* 11: bryellow */
-  [12] = "#839496",  /* 12: brblue   */
-  [13] = "#6c71c4",  /* 13: brmagenta*/
-  [14] = "#93a1a1",  /* 14: brcyan   */
-  [15] = "#fdf6e3",  /* 15: brwhite  */
+ [8]  = "#fdf6e3",  /*  8: brblack  */
+ [9]  = "#cb4b16",  /*  9: brred    */
+ [10] = "#93a1a1",  /* 10: brgreen  */
+ [11] = "#839496",  /* 11: bryellow */
+ [12] = "#657b83",  /* 12: brblue   */
+ [13] = "#6c71c4",  /* 13: brmagenta*/
+ [14] = "#586e75",  /* 14: brcyan   */
+ [15] = "#002b36",  /* 15: brwhite  */
 
   /* extra color */
  [255] = 0,
- [256] = "#002b36", 
- [257] = "#839496",
- [258] = "#93a1a1",
- [259] = "#fdf6e3",
+ [256] = "#fdf6e3", 
+ [257] = "#657b83",
+ [258] = "#586375",
+ [259] = "#002b36",
 };
 
 
