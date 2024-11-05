@@ -72,7 +72,7 @@ static double maxlatency = 33;
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
-static unsigned int blinktimeout = 800;
+static unsigned int blinktimeout = 0;
 
 /*
  * thickness of underline and bar cursors
@@ -118,7 +118,10 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9, alphaUnfocused = 0.80;
+float alpha = 0.8, alphaUnfocused = 0.6;
+
+/* Background opacity */
+float alpha_def;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -264,13 +267,24 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           clippaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      clippaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+
+/* change colorscheme */
 	{ TERMMOD,              XK_P,           swapcolors,     {.i =  0} },
-    { Mod1Mask|ControlMask, XK_k,           kscrollup,      {.i = -1} },
+
+/* copy and open url */
+        { Mod1Mask|ControlMask, XK_k,           kscrollup,      {.i = -1} },
 	{ Mod1Mask|ControlMask, XK_j,           kscrolldown,    {.i = -1} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+
+/* copy and open url */
 	{ MODKEY,               XK_l,           copyurl,        {.i =  0} },
 	{ MODKEY,               XK_u,           opencopied,     {.v = "xdg-open"} },
+
+/* change alpha dynamically */
+	{ ShiftMask,            XK_KP_Subtract, chgalpha,       {.f = -1} }, /* Decrease opacity */
+	{ ShiftMask,            XK_KP_Add,      chgalpha,       {.f = +1} }, /* Increase opacity */
+	{ ShiftMask,            XK_semicolon,   chgalpha,       {.f =  0} }, /* Reset opacity */
 };
 
 
