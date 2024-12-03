@@ -284,7 +284,7 @@ static Shortcut shortcuts[] = {
 /* change alpha dynamically */
 	{ ShiftMask,            XK_KP_Subtract, chgalpha,       {.f = -1} }, /* Decrease opacity */
 	{ ShiftMask,            XK_KP_Add,      chgalpha,       {.f = +1} }, /* Increase opacity */
-	{ ShiftMask,            XK_semicolon,   chgalpha,       {.f =  0} }, /* Reset opacity */
+	{ ShiftMask,            XK_KP_Enter,   chgalpha,       {.f =  0} }, /* Reset opacity */
 };
 
 
