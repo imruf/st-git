@@ -36,3 +36,8 @@ Actions
     Url:
       - Select:  Super+l
       - Open:    Super+u
+    
+    Change Alpha:
+      - Increase:  Shift+KP_+
+      - Decrease:  Shift+KP_-
+      - Reset:     Shift+KP_Enter
