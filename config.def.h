@@ -125,6 +125,7 @@ float alpha_def;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+/* Gruvbox colorscheme */
   /* 8 normal colors */
   [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f medium #282828 */
   [1] = "#ea6962", /* red     */
