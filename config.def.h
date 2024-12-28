@@ -7,8 +7,8 @@
  */
 
 
-static char *font = "mono:pixelsize=16:antialias=true:autohint=true";
-static char *font2[] = { "UbuntuMono Nerd Font:pixelsize=11:antialias=true:autohint=true" };
+static char *font = "mono:pixelsize=18:antialias=true:autohint=true";
+static char *font2[] = { "UbuntuMono Nerd Font:pixelsize=12:antialias=true:autohint=true" };
 
 /* 
 static char *font = "Hack:pixelsize=20:antialias=true:autohint=true";
@@ -118,7 +118,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8, alphaUnfocused = 0.6;
+float alpha = 0.95, alphaUnfocused = 0.85;
 
 /* Background opacity */
 float alpha_def;
