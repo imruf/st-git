@@ -81,6 +81,7 @@ static double maxlatency = 33;
  * attribute.
  */
 static unsigned int blinktimeout = 0;
+/* static unsigned int blinktimeout = 800; */
 
 /*
  * thickness of underline and bar cursors
